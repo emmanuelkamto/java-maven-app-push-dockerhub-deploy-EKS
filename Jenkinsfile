@@ -35,6 +35,7 @@ pipeline {
                         sh "docker build -t emmanuelkamto/demo-app:${IMAGE_NAME} ."
                         sh "echo $PASS | docker login -u $USER --password-stdin"
                         sh "docker push emmanuelkamto/demo-app:${IMAGE_NAME}"
+                    }
                 }
             }
         }
@@ -49,9 +50,6 @@ pipeline {
                    echo 'deploying docker image...'
                    sh 'envsubst < kubernetes/deployment.yaml | kubectl apply -f -'
                    sh 'envsubst < kubernetes/service.yaml | kubectl apply -f -'
-
-                       }
-                    }
                 }
             }
         }
@@ -71,4 +69,5 @@ pipeline {
             }
         }
     }
+}
 

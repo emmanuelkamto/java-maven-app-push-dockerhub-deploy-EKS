@@ -35,7 +35,6 @@ pipeline {
                         sh "docker build -t emmanuelkamto/demo-app:${IMAGE_NAME} ."
                         sh "echo $PASS | docker login -u $USER --password-stdin"
                         sh "docker push emmanuelkamto/demo-app:${IMAGE_NAME}"
-                    }
                 }
             }
         }
